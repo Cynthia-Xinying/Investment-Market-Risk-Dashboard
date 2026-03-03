@@ -194,7 +194,7 @@ const COLORS = {
 const EXPAND = {};
 let lastData = null;
 
-const SYSTEM_PROMPT = `You are a senior macro risk analyst. Use web search to find CURRENT market data, then return ONLY valid JSON (no markdown, no backticks, no preamble) with this exact structure:
+const SYSTEM_PROMPT = `You are a senior macro risk analyst. Use web search to find CURRENT market data, then return ONLY valid JSON. CRITICAL RULES: use only straight double quotes, no smart quotes, no apostrophes in values (use "does not" instead of "doesn't"), no newlines inside strings, no special characters. Return this exact structure with no markdown, no backticks, no text before or after:
 {"timestamp":"YYYY-MM-DD HH:mm UTC","overall_risk":"low|medium|high","overall_summary":"2-3 sentence English summary of the current macro risk environment","pillars":{"oil":{"risk_level":"low|medium|high","current_value":"e.g. WTI $78.5","change":"e.g. +1.2% today","headline":"One sentence current status","analysis":"2-3 sentences explaining what this means for equity markets","action":"What to watch over the next 1-5 days"},"credit":{"risk_level":"low|medium|high","current_value":"e.g. HY OAS ~320bps","change":"e.g. +5bps this week","headline":"One sentence current status","analysis":"2-3 sentences","action":"What to watch next"},"breadth":{"risk_level":"low|medium|high","current_value":"e.g. SPY -0.8%, VIX 18.5","change":"e.g. QQQ -1.1%","headline":"One sentence current status","analysis":"2-3 sentences on breadth, volume, structure","action":"What to watch next"},"earnings":{"risk_level":"low|medium|high","current_value":"e.g. Fwd P/E 21x","change":"e.g. 2026 EPS growth est.","headline":"One sentence current status","analysis":"2-3 sentences on EPS revisions and valuation risk","action":"What to watch next"}}}`;
 
 // Strip any character outside printable ASCII (32-126).
@@ -228,7 +228,7 @@ async function runAnalysis() {
       },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1200,
+        max_tokens: 2000,
         system: SYSTEM_PROMPT,
         tools: [{ type: 'web_search_20250305', name: 'web_search' }],
         messages: [{
@@ -245,9 +245,26 @@ async function runAnalysis() {
 
     const data = await res.json();
     const text = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
-    const match = text.match(/\{[\s\S]*\}/);
-    if (!match) throw new Error('Could not parse response JSON. Please try again.');
-    const parsed = JSON.parse(match[0]);
+
+    // Robust JSON extraction: find outermost { } block
+    const start = text.indexOf('{');
+    const end = text.lastIndexOf('}');
+    if (start === -1 || end === -1) throw new Error('No JSON found in response. Please try again.');
+    let jsonStr = text.slice(start, end + 1);
+
+    // Sanitize common issues: smart quotes → straight quotes, remove control chars
+    jsonStr = jsonStr
+      .replace(/[\u2018\u2019]/g, "'")
+      .replace(/[\u201C\u201D]/g, '"')
+      .replace(/[\u0000-\u001F\u007F]/g, ' ');
+
+    let parsed;
+    try {
+      parsed = JSON.parse(jsonStr);
+    } catch(parseErr) {
+      // Last resort: try to extract just the structure we need field by field
+      throw new Error('Response contained invalid characters. Please click Refresh to try again.');
+    }
     lastData = parsed;
     renderDashboard(parsed);
     document.getElementById('guide').style.display = 'none';
