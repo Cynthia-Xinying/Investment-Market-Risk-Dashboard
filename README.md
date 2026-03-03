@@ -10,8 +10,8 @@ A lightweight, AI-powered market risk terminal that runs entirely in your browse
 
 ## 🚀 Live Demo
 
-> 🔗 **[your-site-name.netlify.app](https://your-site-name.netlify.app)**  
-> *(Replace with your actual Netlify URL)*
+> 🔗 **[your-site-name.netlify.app]([https://your-site-name.netlify.app](https://investment-market-risk.netlify.app/))**  
+
 
 ---
 
