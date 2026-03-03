@@ -9,158 +9,122 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
     --bg: #07090f;
-    --surface: #0d1117;
-    --border: #1e2433;
-    --muted: #3d4a5c;
-    --text: #c9d1d9;
-    --text-dim: #6e7d91;
-    --green: #3fb950;
+    --surface: #0f1318;
+    --border: #2a3347;
+    --muted: #7a8fa8;
+    --text: #dde4ed;
+    --text-dim: #9aafc4;
+    --green: #4ade80;
     --green-bg: #0a1f0e;
-    --amber: #d29922;
-    --amber-bg: #1f1700;
-    --red: #f85149;
-    --red-bg: #1f0707;
-    --accent: #58a6ff;
+    --amber: #fbbf24;
+    --amber-bg: #221a00;
+    --red: #f87171;
+    --red-bg: #220a0a;
+    --accent: #7dd3fc;
   }
   body {
     background: var(--bg);
     color: var(--text);
     font-family: 'Space Mono', monospace;
     min-height: 100vh;
-    padding: 24px 16px;
+    padding: 32px 20px;
+    font-size: 14px;
   }
-  .wrap { max-width: 860px; margin: 0 auto; }
+  .wrap { max-width: 880px; margin: 0 auto; }
 
-  /* Header */
-  .header { margin-bottom: 28px; }
-  .header-top { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
-  .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); box-shadow: 0 0 7px var(--green); animation: blink 2s infinite; }
+  .header { margin-bottom: 32px; }
+  .header-top { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: blink 2s infinite; }
   @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
-  .tag { color: var(--muted); font-size: 10px; letter-spacing: .15em; }
-  h1 { font-size: 20px; color: #e6edf3; letter-spacing: .04em; margin-bottom: 2px; }
-  .sub { color: var(--text-dim); font-size: 11px; }
+  .tag { color: var(--muted); font-size: 12px; letter-spacing: .12em; }
+  h1 { font-size: 26px; color: #f0f4f8; letter-spacing: .04em; margin-bottom: 4px; }
+  .sub { color: var(--text-dim); font-size: 13px; }
 
-  /* API Key bar */
   .apibar {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 14px 18px;
-    margin-bottom: 16px;
-    display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; padding: 16px 20px; margin-bottom: 16px;
+    display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
   }
-  .apibar label { color: var(--text-dim); font-size: 11px; white-space: nowrap; }
+  .apibar label { color: var(--text-dim); font-size: 12px; white-space: nowrap; font-weight: 700; }
   .apibar input {
-    flex: 1; min-width: 240px;
+    flex: 1; min-width: 260px;
     background: #0a0d14; border: 1px solid var(--border);
-    color: var(--text); font-family: 'Space Mono', monospace; font-size: 11px;
-    padding: 7px 11px; border-radius: 5px; outline: none;
+    color: var(--text); font-family: 'Space Mono', monospace; font-size: 13px;
+    padding: 9px 13px; border-radius: 5px; outline: none;
   }
   .apibar input:focus { border-color: var(--accent); }
-  .apibar small { color: var(--muted); font-size: 10px; }
+  .apibar small { color: var(--muted); font-size: 12px; }
 
-  /* Status bar */
   .statusbar {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 18px 22px;
-    margin-bottom: 16px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 20px 24px; margin-bottom: 16px;
     display: flex; justify-content: space-between; align-items: center;
-    flex-wrap: wrap; gap: 14px;
+    flex-wrap: wrap; gap: 16px;
   }
-  .risk-label { color: var(--text-dim); font-size: 10px; letter-spacing: .1em; margin-bottom: 6px; }
-  .risk-value { font-size: 18px; font-weight: 700; }
-  .risk-meter { display: flex; gap: 5px; margin-top: 6px; }
-  .meter-seg { width: 38px; height: 7px; border-radius: 4px; transition: all .3s; }
-  .summary-text { font-family: 'Inter', sans-serif; font-size: 13px; color: #8b949e; line-height: 1.6; max-width: 360px; flex: 1; }
-  .timestamp { color: var(--muted); font-size: 10px; margin-top: 4px; }
+  .risk-label { color: var(--text-dim); font-size: 12px; letter-spacing: .1em; margin-bottom: 8px; }
+  .risk-value { font-size: 20px; font-weight: 700; }
+  .risk-meter { display: flex; gap: 6px; margin-top: 8px; }
+  .meter-seg { width: 42px; height: 8px; border-radius: 4px; transition: all .3s; }
+  .summary-text { font-family: 'Inter', sans-serif; font-size: 14px; color: var(--text-dim); line-height: 1.65; max-width: 380px; flex: 1; }
+  .timestamp { color: var(--muted); font-size: 12px; margin-top: 4px; }
 
-  /* Analyze button */
   .btn {
     background: var(--green-bg); color: var(--green);
-    border: 1px solid #1a4d26; border-radius: 6px;
-    padding: 10px 22px; font-family: 'Space Mono', monospace;
-    font-size: 12px; cursor: pointer; letter-spacing: .04em;
+    border: 1px solid #1e5c2e; border-radius: 6px;
+    padding: 12px 24px; font-family: 'Space Mono', monospace;
+    font-size: 13px; cursor: pointer; letter-spacing: .04em;
     transition: all .2s; white-space: nowrap;
   }
   .btn:hover { background: #0d2c16; border-color: var(--green); }
   .btn:disabled { background: #111827; color: var(--muted); border-color: var(--border); cursor: not-allowed; }
 
-  /* Grid */
-  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px; }
-  @media (max-width: 580px) { .grid { grid-template-columns: 1fr; } }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+  @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
 
-  /* Pillar card */
   .card {
-    border-radius: 9px; padding: 18px 20px; cursor: pointer;
-    transition: all .2s; border: 1px solid var(--border);
-    background: var(--surface);
+    border-radius: 9px; padding: 20px 22px; cursor: pointer;
+    transition: all .2s; border: 1px solid var(--border); background: var(--surface);
   }
-  .card:hover { filter: brightness(1.08); }
+  .card:hover { filter: brightness(1.1); }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; }
-  .card-icon { font-size: 18px; margin-right: 7px; }
-  .card-name { font-size: 12px; font-weight: 700; letter-spacing: .06em; color: #e6edf3; }
-  .card-threshold { color: var(--muted); font-size: 10px; margin-top: 3px; }
-  .card-val { font-size: 13px; font-weight: 700; text-align: right; margin-top: 4px; }
-  .card-chg { color: var(--text-dim); font-size: 10px; text-align: right; }
-  .badge {
-    font-size: 10px; padding: 2px 9px; border-radius: 4px;
-    font-weight: 700; letter-spacing: .04em; display: inline-block;
-  }
-  .headline {
-    margin-top: 14px; padding-top: 12px;
-    font-family: 'Inter', sans-serif; font-size: 13px;
-    font-weight: 600; line-height: 1.5;
-  }
-  .analysis {
-    margin-top: 10px;
-    font-family: 'Inter', sans-serif; font-size: 12px;
-    color: #8b949e; line-height: 1.7;
-  }
+  .card-icon { font-size: 20px; margin-right: 8px; }
+  .card-name { font-size: 14px; font-weight: 700; letter-spacing: .05em; color: #f0f4f8; }
+  .card-threshold { color: var(--muted); font-size: 12px; margin-top: 4px; }
+  .card-val { font-size: 14px; font-weight: 700; text-align: right; margin-top: 5px; }
+  .card-chg { color: var(--text-dim); font-size: 12px; text-align: right; }
+  .badge { font-size: 11px; padding: 3px 10px; border-radius: 4px; font-weight: 700; letter-spacing: .04em; display: inline-block; }
+  .headline { margin-top: 14px; padding-top: 13px; font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 600; line-height: 1.5; }
+  .analysis { margin-top: 10px; font-family: 'Inter', sans-serif; font-size: 13px; color: var(--text-dim); line-height: 1.75; }
   .action-box {
-    margin-top: 10px; padding: 9px 12px;
-    background: rgba(255,255,255,.04); border-radius: 6px;
-    font-size: 11px; color: var(--muted); line-height: 1.5;
-    border-left: 3px solid;
+    margin-top: 10px; padding: 10px 14px;
+    background: rgba(255,255,255,.05); border-radius: 6px;
+    font-size: 13px; color: var(--text-dim); line-height: 1.6;
+    border-left: 3px solid; font-family: 'Inter', sans-serif;
   }
-  .toggle-hint { color: var(--muted); font-size: 10px; margin-top: 10px; }
+  .toggle-hint { color: var(--muted); font-size: 12px; margin-top: 10px; }
 
-  /* Checklist guide */
-  .guide {
-    background: #090c12; border: 1px solid var(--border);
-    border-radius: 8px; padding: 16px 20px; margin-bottom: 16px;
-  }
-  .guide-title { color: var(--muted); font-size: 10px; letter-spacing: .1em; margin-bottom: 10px; }
-  .guide-row {
-    display: flex; align-items: center; gap: 14px;
-    padding: 7px 0; border-bottom: 1px solid #0e1218;
-  }
-  .guide-n { color: #1a2a1a; font-weight: 700; font-size: 13px; min-width: 24px; }
-  .guide-label { color: var(--green); font-size: 12px; min-width: 110px; }
-  .guide-desc { color: var(--muted); font-size: 11px; font-family: 'Inter', sans-serif; }
+  .guide { background: #090c12; border: 1px solid var(--border); border-radius: 8px; padding: 18px 22px; margin-bottom: 16px; }
+  .guide-title { color: var(--muted); font-size: 11px; letter-spacing: .12em; margin-bottom: 12px; font-weight: 700; }
+  .guide-row { display: flex; align-items: center; gap: 16px; padding: 9px 0; border-bottom: 1px solid #131820; }
+  .guide-n { color: #2a4030; font-weight: 700; font-size: 14px; min-width: 26px; }
+  .guide-label { color: var(--green); font-size: 13px; min-width: 120px; font-weight: 700; }
+  .guide-desc { color: var(--text-dim); font-size: 13px; font-family: 'Inter', sans-serif; }
 
-  /* Legend */
-  .legend { display: flex; gap: 18px; justify-content: center; padding: 14px 0; border-top: 1px solid var(--border); flex-wrap: wrap; }
-  .legend-item { display: flex; align-items: center; gap: 6px; }
-  .legend-dot { width: 8px; height: 8px; border-radius: 2px; }
-  .legend-text { color: var(--muted); font-size: 10px; }
+  .legend { display: flex; gap: 20px; justify-content: center; padding: 16px 0; border-top: 1px solid var(--border); flex-wrap: wrap; }
+  .legend-item { display: flex; align-items: center; gap: 7px; }
+  .legend-dot { width: 9px; height: 9px; border-radius: 2px; }
+  .legend-text { color: var(--text-dim); font-size: 12px; }
 
-  /* Error */
-  .error { background: var(--red-bg); border: 1px solid var(--red); border-radius: 8px; padding: 13px 16px; margin-bottom: 14px; color: var(--red); font-size: 12px; }
+  .error { background: var(--red-bg); border: 1px solid var(--red); border-radius: 8px; padding: 14px 18px; margin-bottom: 14px; color: #fca5a5; font-size: 13px; font-family: 'Inter', sans-serif; line-height: 1.6; }
 
-  /* Spinner */
   @keyframes spin { to { transform: rotate(360deg); } }
   .spin { display: inline-block; animation: spin 1s linear infinite; }
-
-  /* Divider in card */
   .divider { border: none; border-top: 1px solid; margin: 0; }
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <!-- Header -->
   <div class="header">
     <div class="header-top">
       <div class="dot"></div>
@@ -170,37 +134,33 @@
     <p class="sub">AI-powered · 4 risk dimensions · 2-min daily check</p>
   </div>
 
-  <!-- API Key -->
   <div class="apibar">
     <label>ANTHROPIC API KEY</label>
     <input type="password" id="apikey" placeholder="sk-ant-api03-..." />
-    <small>Your key is never stored — stays in memory only.</small>
+    <small>Never stored — memory only. Get yours at console.anthropic.com</small>
   </div>
 
-  <!-- Status bar -->
   <div class="statusbar">
     <div>
       <div class="risk-label">OVERALL RISK LEVEL</div>
       <div id="overall-risk" class="risk-value" style="color:var(--muted)">—</div>
       <div class="risk-meter">
-        <div class="meter-seg" id="seg-low" style="background:var(--border)"></div>
-        <div class="meter-seg" id="seg-med" style="background:var(--border)"></div>
+        <div class="meter-seg" id="seg-low"  style="background:var(--border)"></div>
+        <div class="meter-seg" id="seg-med"  style="background:var(--border)"></div>
         <div class="meter-seg" id="seg-high" style="background:var(--border)"></div>
       </div>
     </div>
-    <div id="summary-wrap" class="summary-text" style="color:var(--muted)">
+    <div id="summary-wrap" class="summary-text">
       Enter your API key and click Analyze to get a live risk assessment.
     </div>
     <div style="display:flex;flex-direction:column;align-items:flex-end;gap:6px">
-      <button class="btn" id="analyze-btn" onclick="runAnalysis()">▶ Analyze Now</button>
+      <button class="btn" id="analyze-btn" onclick="runAnalysis()">&#x25B6; Analyze Now</button>
       <span id="ts" class="timestamp"></span>
     </div>
   </div>
 
-  <!-- Error -->
   <div class="error" id="error-box" style="display:none"></div>
 
-  <!-- Daily checklist guide (hidden after first analysis) -->
   <div class="guide" id="guide">
     <div class="guide-title">DAILY 2-MIN CHECKLIST ORDER</div>
     <div class="guide-row"><span class="guide-n">01</span><span class="guide-label">Oil Price</span><span class="guide-desc">External shock — is WTI approaching $100?</span></div>
@@ -209,105 +169,83 @@
     <div class="guide-row"><span class="guide-n">04</span><span class="guide-label">EPS Revisions</span><span class="guide-desc">Slow variable — is full-year EPS being revised down?</span></div>
   </div>
 
-  <!-- 4 Pillar Cards -->
   <div class="grid" id="grid">
-    <div class="card" id="card-oil" onclick="toggle('oil')"><div class="card-top"><div><span class="card-icon">⛽</span><span class="card-name">OIL PRICE</span><div class="card-threshold">Key threshold: $100 WTI</div></div><span class="badge" style="background:#1a1a2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
-    <div class="card" id="card-credit" onclick="toggle('credit')"><div class="card-top"><div><span class="card-icon">💳</span><span class="card-name">CREDIT SPREAD</span><div class="card-threshold">HY OAS widening signal</div></div><span class="badge" style="background:#1a1a2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
-    <div class="card" id="card-breadth" onclick="toggle('breadth')"><div class="card-top"><div><span class="card-icon">📊</span><span class="card-name">MARKET BREADTH</span><div class="card-threshold">A/D line & volume quality</div></div><span class="badge" style="background:#1a1a2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
-    <div class="card" id="card-earnings" onclick="toggle('earnings')"><div class="card-top"><div><span class="card-icon">📈</span><span class="card-name">EPS REVISIONS</span><div class="card-threshold">CY EPS downward trend</div></div><span class="badge" style="background:#1a1a2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
+    <div class="card" id="card-oil"><div class="card-top"><div><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="card-icon">&#x26FD;</span><span class="card-name">OIL PRICE</span></div><div class="card-threshold">Key threshold: $100 WTI</div></div><span class="badge" style="background:#1a1f2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
+    <div class="card" id="card-credit"><div class="card-top"><div><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="card-icon">&#x1F4B3;</span><span class="card-name">CREDIT SPREAD</span></div><div class="card-threshold">HY OAS widening signal</div></div><span class="badge" style="background:#1a1f2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
+    <div class="card" id="card-breadth"><div class="card-top"><div><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="card-icon">&#x1F4CA;</span><span class="card-name">MARKET BREADTH</span></div><div class="card-threshold">A/D line &amp; volume quality</div></div><span class="badge" style="background:#1a1f2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
+    <div class="card" id="card-earnings"><div class="card-top"><div><div style="display:flex;align-items:center;gap:8px;margin-bottom:5px"><span class="card-icon">&#x1F4C8;</span><span class="card-name">EPS REVISIONS</span></div><div class="card-threshold">CY EPS downward trend</div></div><span class="badge" style="background:#1a1f2e;color:var(--muted);border:1px solid var(--border)">Pending</span></div></div>
   </div>
 
-  <!-- Legend -->
   <div class="legend">
     <div class="legend-item"><div class="legend-dot" style="background:var(--green)"></div><span class="legend-text">Low Risk</span></div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--amber)"></div><span class="legend-text">Medium Risk</span></div>
     <div class="legend-item"><div class="legend-dot" style="background:var(--red)"></div><span class="legend-text">High Risk</span></div>
-    <span class="legend-text" style="color:#1e2433">· Click any card to expand full analysis</span>
+    <span class="legend-text" style="color:#2a3347">· Click any card to expand full analysis</span>
   </div>
 
 </div>
 
 <script>
 const COLORS = {
-  low:  { bg:'var(--green-bg)', border:'#1a4d26', text:'var(--green)', badge:'LOW RISK' },
-  medium: { bg:'var(--amber-bg)', border:'#4d3800', text:'var(--amber)', badge:'MEDIUM RISK' },
-  high: { bg:'var(--red-bg)', border:'#4d1010', text:'var(--red)', badge:'HIGH RISK' },
+  low:    { bg:'var(--green-bg)', border:'#1e5c2e', text:'var(--green)', badge:'LOW RISK' },
+  medium: { bg:'var(--amber-bg)', border:'#5c4200', text:'var(--amber)', badge:'MEDIUM RISK' },
+  high:   { bg:'var(--red-bg)',   border:'#5c1010', text:'var(--red)',   badge:'HIGH RISK' },
 };
 const EXPAND = {};
 let lastData = null;
 
-const SYSTEM_PROMPT = `You are a senior macro risk analyst. Use web search to find CURRENT market data, then return ONLY valid JSON (no markdown, no preamble) with this exact structure:
-{
-  "timestamp": "YYYY-MM-DD HH:mm UTC",
-  "overall_risk": "low|medium|high",
-  "overall_summary": "2-3 sentence English summary of the current macro risk environment",
-  "pillars": {
-    "oil": {
-      "risk_level": "low|medium|high",
-      "current_value": "e.g. WTI $78.5",
-      "change": "e.g. +1.2% today",
-      "headline": "One sentence current status",
-      "analysis": "2-3 sentences explaining what this means for equity markets",
-      "action": "What to watch over the next 1-5 days"
-    },
-    "credit": {
-      "risk_level": "low|medium|high",
-      "current_value": "e.g. HY OAS ~320bps",
-      "change": "e.g. +5bps this week",
-      "headline": "One sentence current status",
-      "analysis": "2-3 sentences",
-      "action": "What to watch next"
-    },
-    "breadth": {
-      "risk_level": "low|medium|high",
-      "current_value": "e.g. SPY -0.8%, VIX 18.5",
-      "change": "e.g. QQQ -1.1%",
-      "headline": "One sentence current status",
-      "analysis": "2-3 sentences on breadth, volume, structure",
-      "action": "What to watch next"
-    },
-    "earnings": {
-      "risk_level": "low|medium|high",
-      "current_value": "e.g. Fwd P/E 21x",
-      "change": "e.g. 2026 EPS growth est.",
-      "headline": "One sentence current status",
-      "analysis": "2-3 sentences on EPS revisions and valuation risk",
-      "action": "What to watch next"
-    }
-  }
-}`;
+const SYSTEM_PROMPT = `You are a senior macro risk analyst. Use web search to find CURRENT market data, then return ONLY valid JSON (no markdown, no backticks, no preamble) with this exact structure:
+{"timestamp":"YYYY-MM-DD HH:mm UTC","overall_risk":"low|medium|high","overall_summary":"2-3 sentence English summary of the current macro risk environment","pillars":{"oil":{"risk_level":"low|medium|high","current_value":"e.g. WTI $78.5","change":"e.g. +1.2% today","headline":"One sentence current status","analysis":"2-3 sentences explaining what this means for equity markets","action":"What to watch over the next 1-5 days"},"credit":{"risk_level":"low|medium|high","current_value":"e.g. HY OAS ~320bps","change":"e.g. +5bps this week","headline":"One sentence current status","analysis":"2-3 sentences","action":"What to watch next"},"breadth":{"risk_level":"low|medium|high","current_value":"e.g. SPY -0.8%, VIX 18.5","change":"e.g. QQQ -1.1%","headline":"One sentence current status","analysis":"2-3 sentences on breadth, volume, structure","action":"What to watch next"},"earnings":{"risk_level":"low|medium|high","current_value":"e.g. Fwd P/E 21x","change":"e.g. 2026 EPS growth est.","headline":"One sentence current status","analysis":"2-3 sentences on EPS revisions and valuation risk","action":"What to watch next"}}}`;
+
+// Strip any character outside printable ASCII (32-126).
+// This fixes: "String contains non ISO-8859-1 code point" fetch error
+// caused by hidden unicode characters when copy-pasting API keys.
+function sanitizeKey(raw) {
+  return raw.replace(/[^\x20-\x7E]/g, '').trim();
+}
 
 async function runAnalysis() {
-  const key = document.getElementById('apikey').value.trim();
+  const key = sanitizeKey(document.getElementById('apikey').value);
   if (!key) { showError('Please enter your Anthropic API key above.'); return; }
+  if (!key.startsWith('sk-')) {
+    showError('Key format looks wrong — it should start with "sk-". Re-copy it from console.anthropic.com and try again.');
+    return;
+  }
 
   const btn = document.getElementById('analyze-btn');
   btn.disabled = true;
-  btn.innerHTML = '<span class="spin">⟳</span> Searching live data…';
+  btn.textContent = 'Searching live data...';
   hideError();
 
   try {
     const res = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-api-key': key, 'anthropic-version': '2023-06-01' },
+      headers: {
+        'Content-Type': 'application/json',
+        'x-api-key': key,
+        'anthropic-version': '2023-06-01'
+      },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
         max_tokens: 1200,
         system: SYSTEM_PROMPT,
         tools: [{ type: 'web_search_20250305', name: 'web_search' }],
-        messages: [{ role: 'user', content: 'Search for current market data: WTI crude oil price today, VIX index today, SPY QQQ performance, US high yield credit spreads, S&P 500 forward PE ratio. Then return the JSON risk assessment.' }]
+        messages: [{
+          role: 'user',
+          content: 'Search for current market data: WTI crude oil price today, VIX index today, SPY QQQ performance today, US high yield credit spreads, S&P 500 forward PE ratio. Return the JSON risk assessment only.'
+        }]
       })
     });
 
     if (!res.ok) {
-      const err = await res.json();
+      const err = await res.json().catch(() => ({}));
       throw new Error(err.error?.message || 'API error ' + res.status);
     }
 
     const data = await res.json();
     const text = data.content.filter(b => b.type === 'text').map(b => b.text).join('');
     const match = text.match(/\{[\s\S]*\}/);
-    if (!match) throw new Error('Could not parse JSON from response. Try again.');
+    if (!match) throw new Error('Could not parse response JSON. Please try again.');
     const parsed = JSON.parse(match[0]);
     lastData = parsed;
     renderDashboard(parsed);
@@ -316,30 +254,27 @@ async function runAnalysis() {
     showError('Analysis failed: ' + e.message);
   } finally {
     btn.disabled = false;
-    btn.innerHTML = '↺ Refresh';
+    btn.textContent = 'Refresh';
   }
 }
 
 function renderDashboard(d) {
-  // Overall
   const c = COLORS[d.overall_risk] || {};
   const el = document.getElementById('overall-risk');
-  el.textContent = d.overall_risk === 'low' ? 'LOW RISK' : d.overall_risk === 'medium' ? 'MEDIUM RISK' : 'HIGH RISK';
+  el.textContent = { low:'LOW RISK', medium:'MEDIUM RISK', high:'HIGH RISK' }[d.overall_risk] || '—';
   el.style.color = c.text || 'var(--muted)';
 
   ['low','medium','high'].forEach(l => {
-    const seg = document.getElementById('seg-' + l.replace('medium','med'));
+    const seg = document.getElementById('seg-' + (l === 'medium' ? 'med' : l));
     if (!seg) return;
-    const lc = COLORS[l];
-    seg.style.background = l === d.overall_risk ? lc.border : 'var(--border)';
-    seg.style.boxShadow = l === d.overall_risk ? '0 0 7px ' + lc.border : 'none';
+    const active = l === d.overall_risk;
+    seg.style.background = active ? COLORS[l].border : 'var(--border)';
+    seg.style.boxShadow  = active ? '0 0 8px ' + COLORS[l].border : 'none';
   });
-  // fix medium id
-  document.getElementById('seg-med').style.background = d.overall_risk === 'medium' ? COLORS.medium.border : 'var(--border)';
-  document.getElementById('seg-med').style.boxShadow = d.overall_risk === 'medium' ? '0 0 7px '+COLORS.medium.border : 'none';
 
-  document.getElementById('summary-wrap').textContent = d.overall_summary;
-  document.getElementById('summary-wrap').style.color = 'var(--text)';
+  const sw = document.getElementById('summary-wrap');
+  sw.textContent = d.overall_summary;
+  sw.style.color = 'var(--text)';
   document.getElementById('ts').textContent = 'Updated ' + new Date().toLocaleTimeString();
 
   ['oil','credit','breadth','earnings'].forEach(id => renderCard(id, d.pillars[id]));
@@ -349,15 +284,16 @@ function renderCard(id, p) {
   if (!p) return;
   const card = document.getElementById('card-' + id);
   const c = COLORS[p.risk_level] || {};
-  card.style.background = c.bg || 'var(--surface)';
-  card.style.border = '1px solid ' + (c.border || 'var(--border)');
-  card.style.boxShadow = '0 0 18px ' + (c.border || 'transparent') + '33';
+
+  card.style.background  = c.bg || 'var(--surface)';
+  card.style.border      = '1px solid ' + (c.border || 'var(--border)');
+  card.style.boxShadow   = '0 0 20px ' + (c.border || 'transparent') + '44';
 
   const META = {
-    oil: ['⛽','OIL PRICE','Key threshold: $100 WTI'],
-    credit: ['💳','CREDIT SPREAD','HY OAS widening signal'],
-    breadth: ['📊','MARKET BREADTH','A/D line & volume quality'],
-    earnings: ['📈','EPS REVISIONS','CY EPS downward trend'],
+    oil:      ['&#x26FD;','OIL PRICE','Key threshold: $100 WTI'],
+    credit:   ['&#x1F4B3;','CREDIT SPREAD','HY OAS widening signal'],
+    breadth:  ['&#x1F4CA;','MARKET BREADTH','A/D line &amp; volume quality'],
+    earnings: ['&#x1F4C8;','EPS REVISIONS','CY EPS downward trend'],
   };
   const [icon, name, thresh] = META[id];
   const expanded = EXPAND[id];
@@ -365,24 +301,24 @@ function renderCard(id, p) {
   card.innerHTML = `
     <div class="card-top">
       <div>
-        <div style="display:flex;align-items:center;gap:6px;margin-bottom:4px">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:5px">
           <span class="card-icon">${icon}</span>
           <span class="card-name">${name}</span>
         </div>
         <div class="card-threshold">${thresh}</div>
       </div>
-      <div>
+      <div style="text-align:right">
         <span class="badge" style="background:${c.bg};color:${c.text};border:1px solid ${c.border}">${c.badge}</span>
         <div class="card-val" style="color:${c.text}">${p.current_value}</div>
         <div class="card-chg">${p.change}</div>
       </div>
     </div>
-    <hr class="divider" style="border-color:${c.border}44;margin:13px 0 0" />
+    <hr class="divider" style="border-color:${c.border}55;margin:14px 0 0" />
     <div class="headline" style="color:${c.text}">${p.headline}</div>
     ${expanded ? `
     <div class="analysis">${p.analysis}</div>
     <div class="action-box" style="border-color:${c.border}">
-      👁 <strong>Watch:</strong> ${p.action}
+      <strong>Watch:</strong> ${p.action}
     </div>` : ''}
     <div class="toggle-hint">${expanded ? '▲ Collapse' : '▼ Expand analysis'}</div>
   `;
@@ -394,8 +330,14 @@ function toggle(id) {
   if (lastData) renderCard(id, lastData.pillars[id]);
 }
 
-function showError(msg) { const e = document.getElementById('error-box'); e.style.display='block'; e.textContent='⚠ ' + msg; }
-function hideError() { document.getElementById('error-box').style.display='none'; }
+function showError(msg) {
+  const e = document.getElementById('error-box');
+  e.style.display = 'block';
+  e.textContent = 'Error: ' + msg;
+}
+function hideError() {
+  document.getElementById('error-box').style.display = 'none';
+}
 </script>
 </body>
 </html>
